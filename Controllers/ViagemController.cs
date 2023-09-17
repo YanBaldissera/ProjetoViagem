@@ -26,9 +26,9 @@ public class ViagemController : ControllerBase
     }
     [HttpGet]
     [Route("loginUsuario")]
-    public async Task<ActionResult<Cliente>> LoginUsuario([FromQuery] string nomeUsuario, [FromQuery] string senhaUsuario)
+    public async Task<ActionResult<Cliente>> LoginUsuario([FromQuery] string nomeUsuario, [FromQuery] string senhaUsuario) // FromQuery recebe a solicitação da URL da string
     {
-        var cliente = await _dbContext.Cliente.SingleOrDefaultAsync(c => c.Nome == nomeUsuario);
+        var cliente = await _dbContext.Cliente.SingleOrDefaultAsync(c => c.Nome == nomeUsuario);//sinlgeordefaultasync faz a consulta no banco de dados no banco de dados
 
         if (cliente == null)
         {
