@@ -24,6 +24,24 @@ public class ViagemController : ControllerBase
         _dbContext.SaveChanges();
         return Created("", cliente);
     }
+    [HttpGet]
+    [Route("loginUsuario")]
+    public async Task<ActionResult<Cliente>> LoginUsuario([FromQuery] string nomeUsuario, [FromQuery] string senhaUsuario)
+    {
+        var cliente = await _dbContext.Cliente.SingleOrDefaultAsync(c => c.Nome == nomeUsuario);
+
+        if (cliente == null)
+        {
+            return BadRequest("Nome de usuário não encontrado");
+        }
+
+        if (cliente.Senha != senhaUsuario)
+        {
+            return BadRequest("Senha incorreta");
+        }
+
+        return Ok("Login efetuado com sucesso!!");
+    }
 
     [HttpPost()]
     [Route("CadastrarHospedagem")]
