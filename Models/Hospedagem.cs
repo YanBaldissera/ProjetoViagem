@@ -15,6 +15,8 @@ public class Hospedagem
 
     private int _Estrelas;
 
+    private string _Status;
+
     [Key]
     public string Cnpj
     {
@@ -46,6 +48,12 @@ public class Hospedagem
         set=> _Estrelas=value;
     }
 
+    public string Status 
+    {
+        get => _Status;
+        set => _Status = value;
+    }
+
     public Hospedagem()
     {
         _Cnpj = string.Empty;
@@ -58,15 +66,18 @@ public class Hospedagem
 
         _Estrelas = 0;
 
+        _Status = string.Empty;
+
     }
 
-    public Hospedagem(string cnpj, string nome, string alimentacao, float valor, int estrela)
+    public Hospedagem(string cnpj, string nome, string alimentacao, float valor, int estrela, string status)
     {
         _Cnpj = cnpj;
         _Nome = nome;
         _Alimentacao = alimentacao;
         _ValorDiaria = valor;
         _Estrelas = estrela;
+        _Status = status;
     }
 
 
