@@ -7,6 +7,8 @@ public class ViagemDbContext: DbContext
 {
     public DbSet<Cliente> Cliente {get;set;}
     public DbSet<Hospedagem> Hospedagem {get;set;}
+    public DbSet<Cidades> Cidades {get;set}
+    public DbSet<Companhia> Companhia {get;set}
 
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
