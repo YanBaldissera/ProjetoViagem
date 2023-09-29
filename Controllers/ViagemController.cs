@@ -71,6 +71,47 @@ public class ViagemController : ControllerBase
         return validação;
     }
 
+    [HttpPost()]
+    [Route("CadastrarPaises")]
+    public IActionResult CadastrarPaises(Paises paises)
+    {
+        if(_dbContext is null) return NotFound();
+        if(_dbContext.Paises is null) return NotFound();
+        _dbContext.Add(paises);
+        _dbContext.SaveChanges();
+        return Created("", paises);
+    }
+
+    [HttpGet]
+    [Route("listaPaises")]
+    public async Task<ActionResult<IEnumerable<Paises>>> ListarPaises()
+    {
+        if(_dbContext is null) return NotFound();
+        if(_dbContext.Paises is null) return NotFound();
+        var validação = await _dbContext.Paises.ToListAsync();
+        return validação;
+    }
+
+    [HttpPost()]
+    [Route("CadastrarPassagem")]
+    public IActionResult CadastrarPassagem(Passagem passagem)
+    {
+        if(_dbContext is null) return NotFound();
+        if(_dbContext.Passagem is null) return NotFound();
+        _dbContext.Add(passagem);
+        _dbContext.SaveChanges();
+        return Created("", passagem);
+    }
+    [HttpGet]
+    [Route("listaPassagem")]
+    public async Task<ActionResult<IEnumerable<Passagem>>> ListarPassagem()
+    {
+        if(_dbContext is null) return NotFound();
+        if(_dbContext.Passagem is null) return NotFound();
+        var validação = await _dbContext.Passagem.ToListAsync();
+        return validação;
+    }
+
     [HttpPatch]
     [Route("mudarStatus/{status}")]
     public async Task<ActionResult> MudarStatus(string cnpj, [FromQuery] string status)
@@ -83,5 +124,7 @@ public class ViagemController : ControllerBase
         await _dbContext.SaveChangesAsync();
         return Ok();
     }
+
+
 
 }
