@@ -10,9 +10,7 @@ public class Companhia
     private string _Aviões;
     private string _Destinos;
     private string _Pacotes;
-    private string _Hospedagens;
     private string _Seguros;
-    private string _Carro;
 
     
     public string Nome 
@@ -46,23 +44,12 @@ public class Companhia
         set => _Pacotes = value;
     }
 
-    public string Hospedagens  
-    {
-        get => _Hospedagens;
-        set => _Hospedagens = value;
-    }
-
      public string Seguros  
     {
         get => _Seguros;
         set => _Seguros = value;
     }
 
-     public string Carro  
-    {
-        get => _Carro;
-        set => _Carro = value;
-    }
     public Companhia()
     {
         _Nome = string.Empty;
@@ -70,20 +57,16 @@ public class Companhia
         _Aviões = string.Empty;
         _Destinos = string.Empty;
         _Pacotes = string.Empty;
-        _Hospedagens = string.Empty;
         _Seguros = string.Empty;
-        _Carro = string.Empty;
     }
 
-    public Conpanhia(string nome, string cnpj, string avioes, string destinos, string pacotes, string hospedagens, string seguros, string carro)
+    public Conpanhia(string nome, string cnpj, string avioes, string destinos, string pacotes, string seguros,)
     {
         _Nome = nome;
         _CNPJ = cnpj;
         _Aviões = avioes;
         _Destinos = destinos;
         _Pacotes = pacotes;
-        _Hospedagens = hospedagens;
         _Seguros = seguros;
-        _Carro = carro;
     }
 }
