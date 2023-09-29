@@ -93,6 +93,48 @@ public class ViagemController : ControllerBase
     }
 
     [HttpPost()]
+    [Route("CadastrarCidades")]
+    public IActionResult CadastrarCidades(Cidades cidades)
+    {
+        if(_dbContext is null) return NotFound();
+        if(_dbContext.Cidades is null) return NotFound();
+        _dbContext.Add(cidades);
+        _dbContext.SaveChanges();
+        return Created("", cidades);
+    }
+
+    [HttpGet]
+    [Route("listaCidades")]
+    public async Task<ActionResult<IEnumerable<Cidades>>> ListarCidades()
+    {
+        if(_dbContext is null) return NotFound();
+        if(_dbContext.Cidades is null) return NotFound();
+        var validação = await _dbContext.Cidades.Where(h => h.Status != "inválido").ToListAsync();
+        return validação;
+    }
+
+    [HttpPost()]
+    [Route("CadastrarCompanhia")]
+    public IActionResult CadastrarCompanhia(Companhia companhia)
+    {
+        if(_dbContext is null) return NotFound();
+        if(_dbContext.Companhia is null) return NotFound();
+        _dbContext.Add(companhia);
+        _dbContext.SaveChanges();
+        return Created("", companhia);
+    }
+
+    [HttpGet]
+    [Route("listaCompanhia")]
+    public async Task<ActionResult<IEnumerable<Companhia>>> ListarCompanhia()
+    {
+        if(_dbContext is null) return NotFound();
+        if(_dbContext.Companhia is null) return NotFound();
+        var validação = await _dbContext.Companhia.Where(h => h.Status != "inválido").ToListAsync();
+        return validação;
+    }
+
+    [HttpPost()]
     [Route("CadastrarPassagem")]
     public IActionResult CadastrarPassagem(Passagem passagem)
     {
