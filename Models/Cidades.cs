@@ -12,10 +12,10 @@ public class Cidades
     private string _PTuristico;
 
     [Key]
-    public int IDCidade 
+    public string Cidade 
     {
-        get => _IDCidade;
-        set => _IDCidade = value;
+        get => _Cidade;
+        set => _Cidade = value;
     }
 
     public string País  
@@ -44,16 +44,16 @@ public class Cidades
 
     public Cidades()
     {
-        _IDCidade = int.Empty;
+        _IDCidade = string.Empty;
         _País = string.Empty;
         _NHabitantes = string.Empty;
         _Continente = string.Empty;
         _PTuristico = string.Empty;
     }
 
-    public Cidades(int idCidade, string país, string nhabitantes, string continente, string pturistico)
+    public Cidades(string Cidade, string país, string nhabitantes, string continente, string pturistico)
     {
-        _IDCidade = idCidade;
+        _Cidade = Cidade;
         _País = país;
         _NHabitantes = nhabitantes;
         _Continente = continente;
