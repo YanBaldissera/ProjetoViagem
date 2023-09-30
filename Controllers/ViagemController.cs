@@ -109,7 +109,7 @@ public class ViagemController : ControllerBase
     {
         if(_dbContext is null) return NotFound();
         if(_dbContext.Cidades is null) return NotFound();
-        var validação = await _dbContext.Cidades.Where(h => h.Status != "inválido").ToListAsync();
+        var validação = await _dbContext.Cidades.ToListAsync();
         return validação;
     }
 
@@ -130,7 +130,7 @@ public class ViagemController : ControllerBase
     {
         if(_dbContext is null) return NotFound();
         if(_dbContext.Companhia is null) return NotFound();
-        var validação = await _dbContext.Companhia.Where(h => h.Status != "inválido").ToListAsync();
+        var validação = await _dbContext.Companhia.ToListAsync();
         return validação;
     }
 
