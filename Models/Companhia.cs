@@ -60,7 +60,7 @@ public class Companhia
         _Seguros = string.Empty;
     }
 
-    public Companhia(string nome, string cnpj, string avioes, string destinos, string pacotes, string seguros,)
+    public Companhia(string nome, string cnpj, string avioes, string destinos, string pacotes, string seguros)
     {
         _Nome = nome;
         _CNPJ = cnpj;
