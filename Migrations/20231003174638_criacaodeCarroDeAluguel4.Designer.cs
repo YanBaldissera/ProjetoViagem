@@ -2,6 +2,7 @@
 using API_Viagem.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EmpresaDeViagem.Migrations
 {
     [DbContext(typeof(ViagemDbContext))]
-    partial class ViagemDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231003174638_criacaodeCarroDeAluguel4")]
+    partial class criacaodeCarroDeAluguel4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.11");
@@ -22,6 +25,10 @@ namespace EmpresaDeViagem.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Disponivel")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("EmpresaCNPJ")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -37,6 +44,8 @@ namespace EmpresaDeViagem.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("Placa");
+
+                    b.HasIndex("EmpresaCNPJ");
 
                     b.ToTable("CarrosAluguel");
                 });
@@ -125,6 +134,23 @@ namespace EmpresaDeViagem.Migrations
                     b.HasKey("CNPJ");
 
                     b.ToTable("Companhia");
+                });
+
+            modelBuilder.Entity("API_Viagem.Models.EmpresaAluguelCarros", b =>
+                {
+                    b.Property<string>("CNPJ")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<double>("Nota")
+                        .HasColumnType("REAL");
+
+                    b.HasKey("CNPJ");
+
+                    b.ToTable("EmpresasAluguelCarros");
                 });
 
             modelBuilder.Entity("API_Viagem.Models.GuiaTuristico", b =>
@@ -242,6 +268,17 @@ namespace EmpresaDeViagem.Migrations
                     b.HasKey("NVoo");
 
                     b.ToTable("Passagem");
+                });
+
+            modelBuilder.Entity("API_Viagem.Models.CarroAluguel", b =>
+                {
+                    b.HasOne("API_Viagem.Models.EmpresaAluguelCarros", "Empresa")
+                        .WithMany()
+                        .HasForeignKey("EmpresaCNPJ")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Empresa");
                 });
 #pragma warning restore 612, 618
         }

@@ -2,6 +2,7 @@
 using API_Viagem.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,37 +10,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EmpresaDeViagem.Migrations
 {
     [DbContext(typeof(ViagemDbContext))]
-    partial class ViagemDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231003113951_alteracaoguiaturistico2")]
+    partial class alteracaoguiaturistico2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.11");
-
-            modelBuilder.Entity("API_Viagem.Models.CarroAluguel", b =>
-                {
-                    b.Property<string>("Placa")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Disponivel")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Marca")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Modelo")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<decimal>("ValorDiaria")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Placa");
-
-                    b.ToTable("CarrosAluguel");
-                });
 
             modelBuilder.Entity("API_Viagem.Models.Cidades", b =>
                 {
@@ -129,7 +107,7 @@ namespace EmpresaDeViagem.Migrations
 
             modelBuilder.Entity("API_Viagem.Models.GuiaTuristico", b =>
                 {
-                    b.Property<int>("DocumentoGuia")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -148,14 +126,10 @@ namespace EmpresaDeViagem.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
                     b.Property<decimal>("Valor")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("DocumentoGuia");
+                    b.HasKey("Id");
 
                     b.ToTable("GuiaTuristico");
                 });

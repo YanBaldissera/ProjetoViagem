@@ -44,7 +44,6 @@ public class Cidades
 
     public Cidades()
     {
-        _IDCidade = string.Empty;
         _País = string.Empty;
         _NHabitantes = string.Empty;
         _Continente = string.Empty;

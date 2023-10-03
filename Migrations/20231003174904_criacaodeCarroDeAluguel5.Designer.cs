@@ -2,6 +2,7 @@
 using API_Viagem.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EmpresaDeViagem.Migrations
 {
     [DbContext(typeof(ViagemDbContext))]
-    partial class ViagemDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231003174904_criacaodeCarroDeAluguel5")]
+    partial class criacaodeCarroDeAluguel5
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.11");

@@ -71,6 +71,19 @@ public class ViagemController : ControllerBase
         return validação;
     }
 
+    [HttpPatch]
+    [Route("mudarStatusHospedagem/{status}")]
+    public async Task<ActionResult> MudarStatusHospedagem(string cnpj, [FromQuery] string status)
+    {
+        if(_dbContext is null) return NotFound();
+        if(_dbContext.Hospedagem is null) return NotFound();
+        var hospedagemTemp = await _dbContext.Hospedagem.FindAsync(cnpj);
+        if (hospedagemTemp is null) return NotFound();
+        hospedagemTemp.Status = status;
+        await _dbContext.SaveChangesAsync();
+        return Ok();
+    }
+
     [HttpPost()]
     [Route("CadastrarPaises")]
     public IActionResult CadastrarPaises(Paises paises)
@@ -154,18 +167,84 @@ public class ViagemController : ControllerBase
         return validação;
     }
 
+    [HttpPost()]
+    [Route("CadastrarGuiaTuristico")]
+    public IActionResult CadastrarGuiaTuristico(GuiaTuristico guia)
+    {
+        if (_dbContext is null) return NotFound();
+        if (guia is null) return BadRequest("Dados do Guia Turístico inválidos");
+
+        _dbContext.Add(guia);
+        _dbContext.SaveChanges();
+        return Created("", guia);
+    }
+
+    [HttpGet]
+    [Route("listaGuiasTuristicos")]
+    public async Task<ActionResult<IEnumerable<GuiaTuristico>>> ListarGuiasTuristicos()
+    {
+        if (_dbContext is null) return NotFound();
+        var guias = await _dbContext.GuiaTuristico.Where(g => g.Status != "inválido").ToListAsync();
+        return guias;
+    }
+
     [HttpPatch]
-    [Route("mudarStatus/{status}")]
-    public async Task<ActionResult> MudarStatus(string cnpj, [FromQuery] string status)
+    [Route("AlterarStatusGuia/{status}")]
+    public async Task<ActionResult> AlterarStatusGuia(int DocumentoGuia, [FromQuery] string Status)
     {
         if(_dbContext is null) return NotFound();
-        if(_dbContext.Hospedagem is null) return NotFound();
-        var hospedagemTemp = await _dbContext.Hospedagem.FindAsync(cnpj);
-        if (hospedagemTemp is null) return NotFound();
-        hospedagemTemp.Status = status;
+        if(_dbContext.GuiaTuristico is null) return NotFound();
+        var GuiaTuristicoTemp = await _dbContext.GuiaTuristico.FindAsync(DocumentoGuia);
+        if (GuiaTuristicoTemp is null) return NotFound();
+        GuiaTuristicoTemp.Status = Status;
         await _dbContext.SaveChangesAsync();
         return Ok();
     }
+
+    [HttpPost]
+    [Route("CadastrarCarros")]
+        public async Task<ActionResult<CarroAluguel>> CadastrarCarro(CarroAluguel carro)
+        {
+            if (_dbContext is null) return NotFound();
+            if (carro is null) return BadRequest("Dados do Guia Turístico inválidos");
+            _dbContext.Add(carro);
+            await _dbContext.SaveChangesAsync();
+            return Created("", carro);
+        }
+
+        // Método GET para listar carros disponíveis
+    [HttpGet]
+    [Route("ListarCarros")]
+        public async Task<ActionResult<IEnumerable<CarroAluguel>>> ListarCarrosDisponiveis()
+        {
+            var carrosDisponiveis = await _dbContext.CarrosAluguel
+                .Where(c => c.Disponivel == "Disponível")
+                .ToListAsync();
+
+            if (carrosDisponiveis == null || carrosDisponiveis.Count == 0)
+            {
+                return NotFound();
+            }
+
+            return carrosDisponiveis;
+        }
+
+        // Método PATCH para alterar o status de disponibilidade de um carro
+    [HttpPatch]
+    [Route("AlterarStatusCarro/{status}")]
+        public async Task<IActionResult> AlterarStatusCarro(string Placa, [FromQuery] string NovoStatus)
+        {
+            var carro = await _dbContext.CarrosAluguel.FirstOrDefaultAsync(c => c.Placa == Placa);
+
+            if (carro == null)
+            {
+                return NotFound();
+            }
+
+            carro.Disponivel = NovoStatus;
+            await _dbContext.SaveChangesAsync();
+            return Ok();
+        }
 
 
 

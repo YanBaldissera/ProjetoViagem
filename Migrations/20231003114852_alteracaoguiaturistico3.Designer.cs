@@ -2,6 +2,7 @@
 using API_Viagem.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,37 +10,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EmpresaDeViagem.Migrations
 {
     [DbContext(typeof(ViagemDbContext))]
-    partial class ViagemDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231003114852_alteracaoguiaturistico3")]
+    partial class alteracaoguiaturistico3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.11");
-
-            modelBuilder.Entity("API_Viagem.Models.CarroAluguel", b =>
-                {
-                    b.Property<string>("Placa")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Disponivel")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Marca")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Modelo")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<decimal>("ValorDiaria")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Placa");
-
-                    b.ToTable("CarrosAluguel");
-                });
 
             modelBuilder.Entity("API_Viagem.Models.Cidades", b =>
                 {
