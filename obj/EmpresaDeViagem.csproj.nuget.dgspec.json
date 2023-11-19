@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\yanba\\OneDrive\\Área de Trabalho\\5º periodo\\desenvolvimento visual\\projeto\\EmpresaDeViagem\\EmpresaDeViagem.csproj": {}
+    "C:\\projeto\\EmpresaDeViagem\\EmpresaDeViagem.csproj": {}
   },
   "projects": {
-    "C:\\Users\\yanba\\OneDrive\\Área de Trabalho\\5º periodo\\desenvolvimento visual\\projeto\\EmpresaDeViagem\\EmpresaDeViagem.csproj": {
+    "C:\\projeto\\EmpresaDeViagem\\EmpresaDeViagem.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\yanba\\OneDrive\\Área de Trabalho\\5º periodo\\desenvolvimento visual\\projeto\\EmpresaDeViagem\\EmpresaDeViagem.csproj",
+        "projectUniqueName": "C:\\projeto\\EmpresaDeViagem\\EmpresaDeViagem.csproj",
         "projectName": "EmpresaDeViagem",
-        "projectPath": "C:\\Users\\yanba\\OneDrive\\Área de Trabalho\\5º periodo\\desenvolvimento visual\\projeto\\EmpresaDeViagem\\EmpresaDeViagem.csproj",
+        "projectPath": "C:\\projeto\\EmpresaDeViagem\\EmpresaDeViagem.csproj",
         "packagesPath": "C:\\Users\\yanba\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\yanba\\OneDrive\\Área de Trabalho\\5º periodo\\desenvolvimento visual\\projeto\\EmpresaDeViagem\\obj\\",
+        "outputPath": "C:\\projeto\\EmpresaDeViagem\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\yanba\\AppData\\Roaming\\NuGet\\NuGet.Config"

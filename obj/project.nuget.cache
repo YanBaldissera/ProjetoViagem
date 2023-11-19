@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "U/F9W/bVQCxfeTu47kOGODic51Ow7IrieynusPGgbP6x7/58pPm/olwf+veXSpR0C7Y1pvX1xxzlLTjJn7Y7Pg==",
+  "dgSpecHash": "0gfkJ/4OtZVIoEPhR7oP6Yv5/uWqthJ/iM7Lq+B0JVmfqK1zOU0QKd5D9gN0F/rsntPdaTOTQk/CHDXFryasCg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\yanba\\OneDrive\\Área de Trabalho\\5º periodo\\desenvolvimento visual\\projeto\\EmpresaDeViagem\\EmpresaDeViagem.csproj",
+  "projectFilePath": "C:\\projeto\\EmpresaDeViagem\\EmpresaDeViagem.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\yanba\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\yanba\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.10\\microsoft.aspnetcore.openapi.7.0.10.nupkg.sha512",
